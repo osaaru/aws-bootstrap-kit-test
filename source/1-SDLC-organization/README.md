@@ -12,7 +12,7 @@ Step # | Feature | Description
 -- | -- | --
 0 | [Under the hood](#under-the-hood) | Details about what we are doing
 1 | [Enable Access to Billing data for IAM Users](#Enable-Access-to-Billing-data-for-IAM-Users) | Enable billing access for IAM Users
-2 | [Configure your local credentials](#configure-your-local-credentials) | `aws configure --profile main-admin`
+2 | [Configure your local credentials](#configure-your-local-credentials) | `aws configure --profile osaaru-mgmt2-administrator`
 3 | [Fork and init the repo](#clone-and-init-the-repo) | Get the code
 4 | [Deploy the pipeline](#install-dependencies-and-deploy-the-pipeline) | Deploy your organization through a CI/CD pipeline
 5 | [Setup your SSO domain](#setup-your-sso-domain) | Prepare you user permissions and groups
@@ -77,7 +77,7 @@ Now that this setting is enabled, IAM users with appropriate privileges will be 
 To authenticate requests made using the CLI, we need to give your IAM user credentials (If you don't have one follow [this instruction](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) with *Programmatic access Access type* selected and *AdministratorAccess* policy) and the region you want to use to the Command line:
 
 ```sh
-aws configure --profile main-admin
+aws configure --profile osaaru-mgmt2-administrator
 AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
 AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 Default region name [None]: eu-west-1
@@ -123,7 +123,7 @@ To learn more, check the [official doc](https://docs.aws.amazon.com/cli/latest/u
 1. Link your GitHub repository to AWS by 
     1. Pushing your github personal secret token (follow [this instruction](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) if you don't have one with **admin:repo_hook** full control and **repo** full control) in AWS Secrets Manager, a service that stores your secret securely
         ```sh
-        aws --profile main-admin secretsmanager create-secret --name GITHUB_TOKEN --secret-string <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
+        aws --profile osaaru-mgmt2-administrator secretsmanager create-secret --name GITHUB_TOKEN --secret-string <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
         ```
     1. Set in `source/1-SDLC-organization/cdk.json` the following variables:
 
